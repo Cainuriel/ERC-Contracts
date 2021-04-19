@@ -138,7 +138,7 @@ Dos funciones para transferir el token de su propietario a otra cuenta. Una con 
 
 __setApprovalForAll__
 
-Se puede delegar todos los tokens de un usuario a una cuenta. 
+Se puede delegar todos los tokens de un propietario a una cuenta gestora. 
 
 __transferfrom__ 
 
