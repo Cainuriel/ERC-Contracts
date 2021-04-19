@@ -102,15 +102,24 @@ El JSON que yo he utilizado para crear las insignias es el siguiente:
 
 ```
 Los atributos son:
-__Escasez__: Unique: una unidad. So Rare: diez unidades. Rare: cien unidades.
-__sesión__:  Utilizo el año para seriarizar los tokens.  
-__Tipo_insginia__: Para realizar diferentes categorias. 
-__número de serie__: Lo que determina en realidad su unicidad. 
+__Escasez__: 
+
+Unique: una unidad. So Rare: diez unidades. Rare: cien unidades.
+__sesión__:  
+
+Utilizo el año para seriarizar los tokens.  
+__Tipo_insginia__: 
+
+Para realizar diferentes categorias. 
+__número de serie__: 
+
+Lo que determina en realidad su unicidad. 
 
 
 ## Las funciones del contrato
 
 __approve__
+
 Para delegar la gestión de un token. De ésta forma otras cuentas pueden utilizalo, por ejemplo para ponerse a la venta en una plataforma de venta de NFTs. Se introduce la dirección ethereum que tendrá la gestión del token, y la ID del mismo. Una delegación, solo gestiona no puede transferirlo.
 
 __createBadge__
