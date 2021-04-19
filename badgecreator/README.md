@@ -9,23 +9,28 @@ Lo encontrarás en
  [chrome web store](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=es).
 
 
-1. Ir a la IDE de Remix y crear un workspace.
-2. Crear los archivos en la carpeta contracts en la misma raiz.
+Ir a la IDE de Remix y crear un workspace.
+
+Crear los archivos en la carpeta contracts en la misma raiz.
  ![](img/carpeta-contracts.png "carpeta de contratos")
-3. Seleccionar el archivo Badgecreator.sol para compilar.
+
+Seleccionar el archivo Badgecreator.sol para compilar.
 ![](img/seleccion-archivo.png "seleccion del archivo")
-4. Ir a compilacion, el botón de la izquierda con la S de solidity, seleccionar una versión de compilación que no sea inferior a la de los contratos: ``` pragma solidity ^0.6.0;``` 
+
+Ir a compilacion, el botón de la izquierda con la S de solidity, seleccionar una versión de compilación que no sea inferior a la de los contratos: ``` pragma solidity ^0.6.0;``` 
  ![](img/seleccion-compilador.png "seleccion de compilador")
-6. Realizará las importaciones de Github automáticamente. 
-7. Ir, debajo de compilación, a _deploy run transactions_. Botón con el símbolo de Ethereum.
-8.  Elija el entorno de desarrollo:
-⋅⋅*. Si elije la maquina virtual en JavaScript podrá desplegar en local el contrato para realizar las pruebas de forma segura ![](img/entorno-javascript.png "seleccion de compilador")
-⋅⋅*. Si elije _Injected Web3_ deberá conectar su metamask a una maquina virtual de Ethereum. en la imagen comprobará que hemos conectado a la red de pruebas _Robsten_ ![](img/entorno-injected-Web3.png "seleccion de compilador")
+Realizará las importaciones de Github automáticamente. 
+
+Ir, debajo de compilación, a _deploy run transactions_. Botón con el símbolo de Ethereum.
+Elija el entorno de desarrollo:
+Si elije la maquina virtual en JavaScript podrá desplegar en local el contrato para realizar las pruebas de forma segura ![](img/entorno-javascript.png "seleccion de compilador")
+
+Si elije _Injected Web3_ deberá conectar su metamask a una maquina virtual de Ethereum. en la imagen comprobará que hemos conectado a la red de pruebas _Robsten_ ![](img/entorno-injected-Web3.png "seleccion de compilador")
 
 
 ## Conseguir Ethereum para la redes de Pruebas.
 
-Existen dos redes de pruebas en las que podemos desplegar los contratos inteligentesl. Pero, para emular a la real maquina virtual de Ethereum, necesitamos de Ethers para poder pagar las transacciones y el gas.
+Existen dos redes de pruebas en las que podemos desplegar los contratos. Pero, para poder emular a la real maquina virtual de Ethereum, necesitaremos de Ethers para poder pagar las transacciones y el gas.
 
 A continuación dispone de los links para solicitar Ethers para realizar sus pruebas tanto en _Robsten_ como en _Rinkeby_:
 
