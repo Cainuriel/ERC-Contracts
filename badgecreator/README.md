@@ -129,7 +129,8 @@ Para delegar la gestión de un token. De ésta forma otras cuentas pueden utiliz
 __createBadge__
 
 Función para crear las insignias. Devuelve una id consecutiva "1, 2, 3...". 
-Se ha der introducir la dirección propietaria del token, y el __JSON del token__, por ejemplo "botonacar.json". Éste JSON será concatenado al ``` setBaseURI```. 
+Se introduce la dirección que será propietaria del token, y el __JSON del token__.  Por ejemplo "botonacar.json". 
+Éste JSON será concatenado al ``` setBaseURI```. 
 Probablemente habrá otra forma más eficiente de realizar ésta acción.
 
 __safeTransferFrom__
