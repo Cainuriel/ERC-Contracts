@@ -13,7 +13,7 @@ Ir a la IDE de Remix y crear un workspace.
 
  [IDE Remix Ethereum](https://remix.ethereum.org/).
 
-Crear los archivos en la carpeta contracts en la misma raiz.
+Crear los archivos en la carpeta contracts.
 
  ![](img/carpeta-contracts.png "carpeta de contratos")
 
