@@ -13,7 +13,7 @@ Ir a la IDE de Remix y crear un workspace.
 
  [IDE Remix Ethereum](https://remix.ethereum.org/).
 
-Crear los archivos en la carpeta contracts en la misma raiz.
+Crear los archivos en la carpeta contracts.
 
  ![](img/carpeta-contracts.png "carpeta de contratos")
 
@@ -129,10 +129,22 @@ El JSON que yo he utilizado para crear las insignias es el siguiente:
 
 
 Los atributos son:
-__Escasez__: Unique: una unidad. So Rare: diez unidades. Rare: cien unidades.
-__sesión__:  Utilizo el año para seriarizar los tokens.  
-__Tipo_insginia__: Para realizar diferentes categorias. 
-__número de serie__: Lo que determina en realidad su unicidad. 
+
+__Escasez__: 
+
+Unique: una unidad. So Rare: diez unidades. Rare: cien unidades.
+
+__sesión__:  
+
+Utilizo el año para seriarizar los tokens.  
+
+__Tipo_insginia__: 
+
+Para realizar diferentes categorias. 
+
+__número de serie__: 
+
+Lo que determina en realidad su unicidad. 
 
 ## A tener en cuenta.
 
@@ -142,12 +154,14 @@ El despliegue en la maquina virtual de Javascript solo permite la interaccción 
 ## Las funciones del contrato
 
 __approve__
+
 Para delegar la gestión de un token. De ésta forma otras cuentas pueden utilizalo, por ejemplo para ponerse a la venta en una plataforma de venta de NFTs. Se introduce la dirección ethereum que tendrá la gestión del token, y la ID del mismo. Una delegación, solo gestiona no puede transferirlo.
 
 __createBadge__
 
 Función para crear las insignias. Devuelve una id consecutiva "1, 2, 3...". 
-Se ha der introducir la dirección propietaria del token, y el __JSON del token__, por ejemplo "botonacar.json". Éste JSON será concatenado al ``` setBaseURI```. 
+Se introduce la dirección que será propietaria del token, y el __JSON del token__.  Por ejemplo "botonacar.json". 
+Éste JSON será concatenado al ``` setBaseURI```. 
 Probablemente habrá otra forma más eficiente de realizar ésta acción.
 
 __safeTransferFrom__
@@ -156,7 +170,7 @@ Dos funciones para transferir el token de su propietario a otra cuenta. Una con 
 
 __setApprovalForAll__
 
-Se puede delegar todos los tokens de un usuario a una cuenta. 
+Se puede delegar todos los tokens de un propietario a una cuenta gestora. 
 
 __transferfrom__ 
 
