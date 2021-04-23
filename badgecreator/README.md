@@ -70,6 +70,30 @@ Ello significa que si usted, por ejemplo, cambia la imagen del token en su servi
 Para saber más:
 [IPFS](https://ipfs.io//)
 
+## VOLVER A CONECTAR CON EL CONTRATO
+
+Cuando desplegamos nuestro contrato en una red de pruebas, debemos tener en cuenta el hash de nuestro contrato creado. Ya que ésta dirección será la que debamos colocar en "_Load Contract from Address_" para poder interactuar con él. 
+
+![](img/contract-from-address.png "conexion con contrato desplegado en red")
+
+Recordemos además, __que necesitamos los Sripts compliados del contrato para hacerlo__. 
+
+Dicho lo cual, después de desplegar el contrato en la red de pruebas que hayasmoe elegido, obervaremos en nuestra _Wallet Metamask_ una transacción llamada: "Despliegue de contratos".
+
+![](img/despliegue.png "despliegue de contratos")
+
+Si apretamos en el icono azul nos aparecerá un modal en el que tendremos los detalles de la transacción. Si apretamos en el icono azul en forma de flecha iremos a comprobar nuestra transacción en Etherscan. 
+
+![](img/flecha.png "ver en Etherscan")
+
+Allí veremos toda la información de la transacción, que en éste caso es el despliegue de nuestro contrato BadgeCreator. 
+
+![](img/info-trans.png "Info transacción")
+
+En la fila "_to_" tenemos al contrato. Si apretamos sobre él nos mostrará toda la información del mismo. Y en la parte superior podremos copiar la dirección para colocar en la sección "_Load Contract from Address_" y así poder interactuar con él a través de la __IDE de Remix__.
+
+![](img/info-contract.png "Info contrato")
+
 ## JSON MODELO PARA LAS INSIGNIAS
 
 El JSON que yo he utilizado para crear las insignias es el siguiente:
@@ -101,11 +125,18 @@ El JSON que yo he utilizado para crear las insignias es el siguiente:
 }
 
 ```
+
+
+
 Los atributos son:
 __Escasez__: Unique: una unidad. So Rare: diez unidades. Rare: cien unidades.
 __sesión__:  Utilizo el año para seriarizar los tokens.  
 __Tipo_insginia__: Para realizar diferentes categorias. 
 __número de serie__: Lo que determina en realidad su unicidad. 
+
+## A tener en cuenta.
+
+El despliegue en la maquina virtual de Javascript solo permite la interaccción con el contrato con las diez cuentas de Ethereum que dispone. Para que inteeractue con cuentas reales, tendrá que desplegar el contrato en _Robsten_ o _Rinkeby_
 
 
 ## Las funciones del contrato
