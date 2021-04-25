@@ -1,0 +1,12 @@
+{
+    "attributes" : [ {
+      "trait_type" : "Recuerdo",
+      "value" : "2021"
+    }, {
+      "trait_type" : "Perro",
+      "value" : "Raza desconocida"
+    } ],
+    "description" : "Recuerdo de mi perra Estrella",
+    "image" : "https://gateway.pinata.cloud/ipfs/QmSVuv48A1gazVjVdQVRxgWKzKGjV4rQxbFyhk8a3ULw7v",
+    "name" : "Estrella"
+}
