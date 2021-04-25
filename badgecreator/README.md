@@ -33,12 +33,12 @@ Si elije la maquina virtual en JavaScript podrá desplegar en local el contrato 
 
 ![](img/entorno-javascript.png "seleccion de compilador")
 
-Si elije _Injected Web3_ deberá conectar su metamask a una maquina virtual de Ethereum. en la imagen comprobará que hemos conectado a la red de pruebas _Robsten_. 
+Si elije _Injected Web3_ deberá conectar su _metamask_ a una maquina virtual de Ethereum. En la imagen comprobará que hemos conectado a la red de pruebas _Robsten_. 
 
 ![](img/entorno-injected-Web3.png "seleccion de compilador")
 
 
-## Conseguir Ethereum para la redes de Pruebas.
+## Conseguir Ethers para las redes de Pruebas.
 
 Existen dos redes de pruebas en las que podemos desplegar los contratos. Pero, para poder emular a la red principal, necesitaremos de Ethers para poder pagar las transacciones y el gas. No se ilusione, solo funcionan en sus redes de prueba.
 
@@ -72,11 +72,11 @@ Para saber más:
 
 ## VOLVER A CONECTAR CON EL CONTRATO
 
-Cuando desplegamos nuestro contrato en una red de pruebas, debemos tener en cuenta el hash de nuestro contrato creado. Ya que ésta dirección será la que debamos colocar en "_Load Contract from Address_" para poder interactuar con él. 
+Cuando desplegamos nuestro contrato en una red de pruebas, debemos guardar la dirección para poder conectarnos con él cuando deseemos. Ésta dirección será la que debamos colocar en "_Load Contract from Address_" para poder interactuar con él. 
 
 ![](img/contract-from-address.png "conexion con contrato desplegado en red")
 
-Recordemos además, __que necesitamos los Sripts compliados del contrato para hacerlo__. 
+Recordemos además, __que necesitamos los Sripts compilados del contrato para hacer esto__. 
 
 Dicho lo cual, después de desplegar el contrato en la red de pruebas que hayasmoe elegido, obervaremos en nuestra _Wallet Metamask_ una transacción llamada: "Despliegue de contratos".
 
