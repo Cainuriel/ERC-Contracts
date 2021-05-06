@@ -1,5 +1,6 @@
 //Contract based on https://docs.openzeppelin.com/contracts/3.x/erc721
 // SPDX-License-Identifier: MIT
+// In memory of my dear dog Estrella. Rest in peace 2021 - April
 pragma solidity ^0.7.3;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";

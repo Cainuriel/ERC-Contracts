@@ -7,7 +7,7 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(API_URL);
 
 const contract = require("../artifacts/contracts/NFT.sol/NFT.json");
-const contractAddress = "0x220CCfb069A7c63aD162dadA6372d0290E683d1c"; // no use mi contrato.
+const contractAddress = "0x220CCfb069A7c63aD162dadA6372d0290E683d1c"; // no use my contract.
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
 async function mintNFT(tokenURI) {
@@ -38,5 +38,5 @@ async function mintNFT(tokenURI) {
   });
 }
 
-// hemos creado un json y una imagen en pinata. 
+// we have created a json with a pinata image of my beloved dog Star "Estrella". 
 mintNFT("https://gateway.pinata.cloud/ipfs/QmdcXaK8CmZ4x4XvrgroSpLY45b52PNT77pPeSEUtRB9Rf");
