@@ -1,4 +1,4 @@
-## Este contrato se ha desarrollado en Alchemy. Si desea realizarlo igual tendrá que crearse una APP en su plataforma. Nosotros hemos usado la red Robsten.
+## Este contrato se ha desarrollado en Alchemy. Si desea realizarlo igual tendrá que crearse una APP en su plataforma. Nosotros hemos usado la red Ropsten.
 
 [Alchemy](https://www.alchemyapi.io/)
 
@@ -80,7 +80,7 @@ Registrese y cree su llave:
 
 No olvide introducir su __ETHERSCAN_API_KEY__ en sus variables de entorno.
 
-Este complemento ayuda a verificar el código fuente del contrato en Etherscan, tanto en la red real como en todas sus testnet.
+Este complemento ayuda a verificar el código fuente del contrato en Etherscan, tanto en la mainet como en una red testnet, en nuestro caso, ropsten.
 
 Proporcione la dirección de implementación y los argumentos del constructor, nosotros no usamos, y el complemento detectará localmente el contrato a verificar:
 ``` npx hardhat verify --network ropsten CONTRACT-ADDRESS  "" ```
