@@ -66,3 +66,21 @@ Tiene que subir la imagen, y luego incluirla en el JSON, para finalmente, volver
 Para realizar la transaccion final de su token tendrá que correr el archivo mint-nft.js
 
 ```node scripts/mint-nft.js```
+
+## API DE ETHERSCAN
+
+### Instalación
+
+``` npm install --save-dev @nomiclabs/hardhat-etherscan ```
+
+### Creación de la llave
+
+Registrese y cree su llave:
+[Etherscan](https://etherscan.io/apis/)
+
+No olvide introducir su __ETHERSCAN_API_KEY__ en sus variables de entorno.
+
+Este complemento ayuda a verificar el código fuente del contrato en Etherscan, tanto en la red real como en todas sus testnet.
+
+Proporcione la dirección de implementación y los argumentos del constructor, nosotros no usamos, y el complemento detectará localmente el contrato a verificar:
+``` npx hardhat verify --network ropsten CONTRACT-ADDRESS  "" ```
