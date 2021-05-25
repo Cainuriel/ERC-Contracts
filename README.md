@@ -1,2 +1,2 @@
-# ERC721-Contracts
-Ethereum No Fungible Tokens Contracts with Standard ERC721
+# ERC-Contracts
+Ethereum No Fungible Tokens and others Standard Contracts.
