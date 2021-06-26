@@ -239,7 +239,7 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 	address[] private _excludedFromReward;
 
 	address BURN_ADDRESS = 0x0000000000000000000000000000000000000001;
-	address _projectAddress;
+	address public _projectAddress;
 
 	uint256 private constant MAX = ~uint256(0);
 	uint256 private _tTotal = 10000000 * 10**18;
@@ -250,14 +250,14 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 	string private _symbol = "PANDORA";
 	uint8 private _decimals = 18;
 	
-	uint256 public _rewardFee = 1;
+	uint256 public _rewardFee = 3;
 	uint256 private _previousRewardFee = _rewardFee;
 	
-	uint256 public _burnFee = 1;
+	uint256 public _burnFee = 3;
 	uint256 private _previousBurnFee = _burnFee;
 	
-		uint256 public _projectFee = 5;
-	uint256 private _previousprojectnFee = _burnFee;
+	uint256 public _projectFee = 4;
+	uint256 private _previousProjectFee = _projectFee;
 
 	IUniswapV2Router02 public immutable uniswapV2Router;
 	address public immutable uniswapV2Pair;
@@ -266,10 +266,15 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 	event TransferBurn(address indexed from, address indexed burnAddress, uint256 value);
 	event TransferProject(address indexed from, address indexed projectAddress, uint256 value);
 
-
-	constructor (address projectAddress) {
+	constructor ( address initialProjectAddress ) {
+	      require(
+            initialProjectAddress != address(0),
+            "Address should not be 0x00"
+        );
+        
 		_rOwned[_msgSender()] = _rTotal;
-		_projectAddress = projectAddress;
+		
+		_projectAddress = initialProjectAddress;
 		
 	
 		//IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F);		// binance PANCAKE V1
@@ -506,7 +511,7 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 		if(_rewardFee == 0 && _burnFee == 0 && _projectFee == 0) return;		
 		_previousRewardFee = _rewardFee;
 		_previousBurnFee = _burnFee;
-		_previousprojectnFee = _projectFee;	
+		_previousProjectFee = _projectFee;	
 		_rewardFee = 0;
 		_burnFee = 0;
 		_projectFee = 0;
@@ -515,7 +520,7 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 	function restoreAllFee() private {
 		_rewardFee = _previousRewardFee;
 		_burnFee = _previousBurnFee;
-		_projectFee = _previousprojectnFee;
+		_projectFee = _previousProjectFee;
 	}
 	
 	function isExcludedFromFee(address account) public view returns(bool) {
