@@ -354,7 +354,7 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 	function deliver(uint256 tAmount) public {
 		address sender = _msgSender();
 		require(!_isExcludedFromReward[sender], "Excluded addresses cannot call this function");
-		(uint256 rAmount,,,,,) = _getValues(tAmount);
+		(uint256 rAmount,,,,,,) = _getValues(tAmount);
 		_rOwned[sender] = _rOwned[sender].sub(rAmount);
 		_rTotal = _rTotal.sub(rAmount);
 		_tHODLrRewardsTotal = _tHODLrRewardsTotal.add(tAmount);
@@ -363,10 +363,10 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 	function reflectionFromToken(uint256 tAmount, bool deductTransferFee) public view returns(uint256) {
 		require(tAmount <= _tTotal, "Amount must be less than supply");
 		if (!deductTransferFee) {
-			(uint256 rAmount,,,,,) = _getValues(tAmount);
+			(uint256 rAmount,,,,,,) = _getValues(tAmount);
 			return rAmount;
 		} else {
-			(,uint256 rTransferAmount,,,,) = _getValues(tAmount);
+			(,uint256 rTransferAmount,,,,,) = _getValues(tAmount);
 			return rTransferAmount;
 		}
 	}
@@ -419,8 +419,8 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 		_burnFee = burnFee;
 	}
 	
-		function setProjectFeePercent(uint256 projectAddress) external onlyOwner {
-		_projectAddress = projectAddress;
+		function setProjectFeePercent(uint256 projectFee) external onlyOwner {
+		_projectFee = projectFee;
 	}
 	
 	function setMaxTxPercent(uint256 maxTxPercent) external onlyOwner {
@@ -460,7 +460,7 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 		uint256 rHODLrFee = tHODLrFee.mul(currentRate);
 		uint256 rBurn = tBurn.mul(currentRate);
 		uint256 rProject = tProject.mul(currentRate);
-		uint256 rTransferAmount = rAmount.sub(rHODLrFee).sub(rBurn)..sub(rProject);
+		uint256 rTransferAmount = rAmount.sub(rHODLrFee).sub(rBurn).sub(rProject);
 		return (rAmount, rTransferAmount, rHODLrFee);
 	}
 
@@ -515,7 +515,7 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 	function restoreAllFee() private {
 		_rewardFee = _previousRewardFee;
 		_burnFee = _previousBurnFee;
-		_projectFee = _previousprojecFee;
+		_projectFee = _previousprojectnFee;
 	}
 	
 	function isExcludedFromFee(address account) public view returns(bool) {
@@ -575,7 +575,7 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 		uint256 currentRate = _getRate();
 		uint256 rProject = tProject.mul(currentRate);		
 		_rOwned[_projectAddress] = _rOwned[_projectAddress].add(rProject);
-		if(_isExcludedFromReward_projectAddress)
+		if(_isExcludedFromReward[_projectAddress])
 			_tOwned[_projectAddress] = _tOwned[_projectAddress].add(tProject);
 	}
 
