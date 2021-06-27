@@ -574,7 +574,7 @@ contract Pandora is Context, IERC20, Ownable, ReentrancyGuard {
 		_rOwned[BURN_ADDRESS] = _rOwned[BURN_ADDRESS].add(rBurn);
 		if(_isExcludedFromReward[BURN_ADDRESS])
 			_tOwned[BURN_ADDRESS] = _tOwned[BURN_ADDRESS].add(tBurn);
-		
+		_tTotal = _tTotal.sub(tBurn);
 		emit Transfer(sender, BURN_ADDRESS, tBurn);
 			
 			
