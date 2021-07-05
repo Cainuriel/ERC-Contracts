@@ -1,8 +1,8 @@
-//SPDX-License-Identifier: Unlicense
+/SPDX-License-Identifier: Unlicense
 pragma solidity ^0.6.12;
 
 import  "./BEP20.sol";
-import "./tools/SafeMath.sol";
+import "./SafeMath.sol";
 
 
 /**
@@ -71,12 +71,16 @@ contract Crowdsale  {
   fallback ()  external payable {
     buyTokens(msg.sender);
   }
+  
+    receive ()  external payable {
+    buyTokens(msg.sender);
+  }
 
   /**
    * @dev low level token purchase ***DO NOT OVERRIDE***
    * @param _beneficiary Address performing the token purchase
    */
-  function buyTokens(address _beneficiary) public payable {
+  function buyTokens(address _beneficiary) public virtual payable {
 
     uint256 weiAmount = msg.value;
     _preValidatePurchase(_beneficiary, weiAmount);
@@ -114,7 +118,7 @@ contract Crowdsale  {
     address _beneficiary,
     uint256 _weiAmount
   )
-    internal
+   pure internal
   {
     require(_beneficiary != address(0));
     require(_weiAmount != 0);
