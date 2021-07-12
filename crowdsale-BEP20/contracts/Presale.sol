@@ -3,7 +3,12 @@
 pragma solidity ^0.6.12;
 
 import  "./Crowdsale.sol";
-import  "./Ownable.sol";
+import  "./tools/Ownable.sol";
+//import  "@openzeppelin/contracts/crowdsale/Crowdsale.sol";
+//import  "@openzeppelin/contracts/token/ERC20/Ownable.sol";
+//import "hardhat/console.sol";
+
+// trusty contrato de fernando: 0x21176b07a996E62C905e5bf29b1E3e8F1f237d8A
 
 /**
  * Standard de preventa con algunas customizacinones personales.
@@ -29,6 +34,9 @@ interface TokenInterface {
 contract SALETOKEN is Crowdsale, Ownable {
     
    uint256  public limitBuy = 3000000000000000000;
+   
+   uint256 public minRate = 100000;
+   uint256 public maxRate = 220000;
     
      TokenInterface TokenContract; // interface para manipular metodos del token.
 
@@ -47,7 +55,7 @@ contract SALETOKEN is Crowdsale, Ownable {
     
     public {
         
-        require(_rate >= 100000 && _rate <= 220000 , "La cantidad de tokens tiene que estar entre 100000 y 220000");
+        require(_rate >= minRate && _rate <= maxRate , "La cantidad de tokens tiene que estar entre 100000 y 220000");
         
         // pásamos el contrato del token, como direccion para ser usada por la interface
         TokenContract = TokenInterface(_addressToken);
@@ -73,11 +81,18 @@ contract SALETOKEN is Crowdsale, Ownable {
   }
   
      function setRate(uint256 _newrate) public onlyOwner() {
+         
+    require(_newrate >= minRate && _newrate <= maxRate , "La cantidad de tokens tiene que estar entre 100000 y 220000");
     rate = _newrate;
   }
   
       function setLimitBuy(uint256 _newLimit) public onlyOwner() {
     limitBuy = _newLimit;
+  }
+  
+      function setLimirates(uint256 _newLimitminRate, uint256 _newLimitmaxRate) public onlyOwner() {
+    minRate = _newLimitminRate;
+    maxRate = _newLimitmaxRate;
   }
   
    /**

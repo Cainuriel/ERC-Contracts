@@ -1,8 +1,8 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.6.12;
 
-import  "./BEP20.sol";
-import "./SafeMath.sol";
+import  "./tools/BEP20.sol";
+import "./tools/SafeMath.sol";
 
 
 /**
