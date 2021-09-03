@@ -3,7 +3,7 @@ pragma solidity >0.6.99 <0.8.0;
 
 contract ReceiverPays {
     
-    address owner = msg.sender;
+    address payable public owner = msg.sender;
 
     mapping(uint256 => bool) usedNonces;
     mapping(uint256 => address) noncesRecipients;
@@ -12,11 +12,11 @@ contract ReceiverPays {
     constructor() payable {}
     
     function moreMoney() public payable {
-        require(msg.sender == owner);
+
     }
     
     function balanceOf() public view returns(uint256) {
-        require(msg.sender == owner);
+
        return address(this).balance;
     }
     
@@ -30,14 +30,14 @@ contract ReceiverPays {
        return noncesAmount[nonce];
     }
 
-    function claimPayment(uint256 amount, uint256 nonce, bytes memory signature) public {
+    function claimPayment(address payer, uint256 amount, uint256 nonce, bytes memory signature) public {
         require(!usedNonces[nonce], 'Este cheque ya se ha pagado');
         usedNonces[nonce] = true;
 
         // this recreates the message that was signed on the client
         bytes32 message = prefixed(keccak256(abi.encodePacked(msg.sender, amount, nonce, this)));
 
-        require(recoverSigner(message, signature) == owner);
+        require(recoverSigner(message, signature) == payer);
 
         msg.sender.transfer(amount);
         noncesRecipients[nonce] = msg.sender;
@@ -45,10 +45,11 @@ contract ReceiverPays {
         
     }
 
-    /// destroy the contract and reclaim the leftover funds.
+    /// empty the money contract
     function shutdown() public {
         require(msg.sender == owner);
-        selfdestruct(msg.sender);
+        owner.transfer(address(this).balance);
+        
     }
 
     /// signature methods.
