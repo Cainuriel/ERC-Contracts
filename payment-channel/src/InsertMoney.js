@@ -7,7 +7,8 @@ import Swal from 'sweetalert2';
 const InsertMoney = () => {
 
     const [amount, setAmount] = useState('0.1');
-    const payContract = "0x48ca55D931Da2ff95ccfB78f482F4462814D2f2E";
+    const [balance, setBalance] = useState('');
+    const payContract = "0x00e55244c13FfA6D6313718459D82536F43F6dcf";
 
     async function moreMoney() {
 
@@ -18,30 +19,31 @@ const InsertMoney = () => {
           const signer = provider.getSigner();
           const contract = new ethers.Contract(payContract, ReceiverPays.abi, signer);
           let bnbAmount = ethers.utils.parseEther(amount).toString();
-
-
           try {
-
             const tx = await contract.moreMoney({value: bnbAmount});
-            if(tx) {
+            Swal.fire({
+              title: 'Procesando el ingreso',
+              text: 'Espere, y no actualice la página',
+              // icon: 'info',
+              showConfirmButton: false,
+              imageUrl: 'https://thumbs.gfycat.com/ConventionalOblongFairybluebird-size_restricted.gif',
+              imageWidth: 100,
+              imageHeight: 100,
+              imageAlt: 'Procesando el ingreso',
+  
+            });
+            const Ok = await tx.wait();
+            if(Ok) {
               Swal.fire({
-              title:  `Ingreso en proceso`,
-              text: `Se enviará ${amount} BNB al contrato ${payContract}`,
+              title:  `Se ha enviado ${amount} BNB al contrato ${payContract}`,
+              html: `<a href="https://testnet.bscscan.com/tx/${tx.hash}" target="_blank">Hash de la transacción</a>`,
               icon: 'success',
               confirmButtonText: 'Cerrar'
             })};
-  
+    
+            getBalanceUser();
           } catch (err) {
             let mensajeError = err.message;
-             
-            if (err.data) {
-  
-              if (err.data.message === 'execution reverted: Este cheque ya se ha pagado') {
-                mensajeError =  'Este cheque ya se ha pagado';
-              } else {
-                console.log('error: ',mensajeError);
-              }
-            }
         
             Swal.fire({
               title: 'Ooops!',
@@ -55,19 +57,33 @@ const InsertMoney = () => {
         }
 
       useEffect(function () {
-        init();
         changeAccounts();
       },[]);
 
-      async function init() {   
+      async function getBalanceUser() {
 
-                const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
-                let accountConnection = accounts[0];
-                let subint = accountConnection.substr(0,4);
-                let subfinal = accountConnection.substr(-4,4);
-                document.querySelector('#ingresador').innerHTML ='conectado con la cuenta: ' + subint + '...' + subfinal;
-            
-      } 
+            const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(payContract, ReceiverPays.abi, signer);
+
+            try {
+              const contractUserBalance = await contract.recipientBalance(account);
+              let amount = ethers.utils.formatEther(contractUserBalance).toString();
+              let bnbAmount = Number.parseFloat(amount).toFixed(2);
+              setBalance(`Dispone de ${bnbAmount} BNB ingresados`);
+            } catch (err) {
+              let mensajeError = err.message;
+              Swal.fire({
+                title: 'Ooops!',
+                text: `${mensajeError}`,
+                icon: 'error',
+                confirmButtonText: 'Cerrar'
+              })
+              console.log("Error: ", err)
+            }
+
+      }
 
         // funcion que detecta los cambios de cuenta
         async function changeAccounts() {
@@ -76,7 +92,7 @@ const InsertMoney = () => {
 
             window.ethereum.on("accountsChanged", async function () {
 
-              await init();
+              await getBalanceUser();
               
             });
 
@@ -89,21 +105,21 @@ const InsertMoney = () => {
           <div className="bg-dark container col-xl-10 col-xxl-8 px-4 py-5">
             <div className="row align-items-center g-lg-5 py-5">
               <div className="col-lg-7 text-center text-lg-start">
-                <h1  className="display-4 fw-bold lh-1 mb-3 text-white">Ingresar BNBs al contrato</h1>
-                <p  className="col-lg-10 fs-4 text-white">El contrato está preparado para recibir BNBs de cualquier cuenta. Necesitamos que ingrese algo de lo capturado de la Faucet para continuar con el ejemplo. Si quiere ver ya al contrato de cobro <a href="https://testnet.bscscan.com/address/0x48ca55D931Da2ff95ccfB78f482F4462814D2f2E#code">aquí</a> lo tiene. </p>
+                <h2  className="display-4 fw-bold lh-1 mb-3 text-white">Ingresar BNB al contrato</h2>
+                <p  className="col-lg-10 fs-4 text-white">El contrato está preparado para recibir BNBs de cualquier cuenta. Aun así controla que nadie pueda gastar más de lo que ingrese. Si realiza un cheque de 1 BNB y tiene en el contrato solo 0.5, por ejemplo, el cheque no se cobra ni se anula. Puede ingresar posteriormente 0.5 BNB para que el cobrador pueda ejecutarlo. </p>
 
               </div>
               <div className="col-md-10 mx-auto col-lg-5">
                 <form className="p-4 p-md-5 border rounded-3 bg-light">
                     <div className="form-floating mb-3">
-                      <input value={amount} onChange={e => setAmount(e.target.value.replace(',', '.'))} type="text" className="form-control" id="amount"/>
-                      <label htmlFor="amount">BNBs a ingresar</label>
+                      <input value={amount} onChange={e => setAmount(e.target.value.replace(',', '.'))} type="text" className="form-control" id="amountToSend"/>
+                      <label htmlFor="amountToSend">BNBs a ingresar</label>
                     </div>
-                    <button id="btn-firma"  onClick={() => moreMoney()} className="w-100 btn btn-lg btn-primary" type="button">Ingresar</button>
-    
-                        {/* <button id="btn-firma"  onClick={() => signPayment(recipient, amount, nonce, contractAddress)} className="w-100 btn btn-lg btn-primary" type="button">Firmar</button> */}
+                    <button id="btn-deposit"  onClick={() => moreMoney()} className="w-100 btn btn-lg btn-primary" type="button">Ingresar</button>
                     <hr className="my-4"/>
-                    <small id="ingresador" className="text-muted">...</small>
+                    <button id="btn-balance"  onClick={() => getBalanceUser()} className="btn-success w-100 btn btn-lg" type="button">Comprobar su balance</button>
+                    <hr className="my-4"/>
+                    <small id="balance" className="text-muted">{balance}</small>
                 </form>
               <div>
             </div>

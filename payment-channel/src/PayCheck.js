@@ -9,8 +9,8 @@ const PayCheck = () => {
     const [amount, setAmount] = useState('0.1');
     const [nonce, setNonce] = useState(0);
     const [payer, setPayer] = useState('');
-    const [signedHash, setSignedHash] = useState('XXXx');
-    const payContract = "0x48ca55D931Da2ff95ccfB78f482F4462814D2f2E";
+    const [signedHash, setSignedHash] = useState('');
+    const payContract = "0x00e55244c13FfA6D6313718459D82536F43F6dcf";
 
     async function payCheck() {
 
@@ -19,22 +19,33 @@ const PayCheck = () => {
           const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' });
           const provider = new ethers.providers.Web3Provider(window.ethereum);
           const signer = provider.getSigner();
-          console.log('cuenta ', account);
           const contract = new ethers.Contract(payContract, ReceiverPays.abi, signer);
           let bnbAmount = ethers.utils.parseEther(amount).toString();
-          console.log('transformacion en bnbs', bnbAmount );
+
 
           try {
 
             const tx = await contract.claimPayment(payer, bnbAmount, nonce, signedHash, {from: account});
+            Swal.fire({
+              title: 'Procesando el pago del cheque',
+              text: 'Espere. No actualice la página',
+              // icon: 'info',
+              showConfirmButton: false,
+              imageUrl: 'https://thumbs.gfycat.com/ConventionalOblongFairybluebird-size_restricted.gif',
+              imageWidth: 100,
+              imageHeight: 100,
+              imageAlt: 'Procesando el ingreso',
+  
+            });
+            const Ok = await tx.wait();
             if(tx) {
               Swal.fire({
-              title:  `¡Operación aceptada!`,
-              text: `Se enviará ${amount} BNB a la cuenta ${account}`,
+              title:  `Se ha envíado ${amount} BNB a la cuenta ${account}`,
+              html: `<a href="https://testnet.bscscan.com/tx/${tx.hash}" target="_blank">Hash de la transacción</a>`,
               icon: 'success',
               confirmButtonText: 'Cerrar'
             })};
-  
+            console.log('transaction ', tx);
           } catch (err) {
             let mensajeError = err.message;
              
@@ -58,34 +69,6 @@ const PayCheck = () => {
       }
     }
 
-    useEffect(function () {
-      init();
-      changeAccounts();
-    },[]);
-
-async function init() {   
-
-          const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
-          let accountConnection = accounts[0];
-          let subint = accountConnection.substr(0,4);
-          let subfinal = accountConnection.substr(-4,4);
-          document.querySelector('#cobrador').innerHTML ='conectado con la cuenta: ' + subint + '...' + subfinal;
-      
-} 
-
-        // funcion que detecta los cambios de cuenta
-        async function changeAccounts() {
-        
-          if (typeof window.ethereum !== 'undefined') {
-
-            window.ethereum.on("accountsChanged", async function () {
-
-              await init();
-              
-            });
-
-          }
-        }
     
     return (
         <div className="App">       
@@ -93,18 +76,18 @@ async function init() {
           <div className="bg-dark container col-xl-10 col-xxl-8 px-4 py-5">
             <div className="row align-items-center g-lg-5 py-5">
               <div className="col-lg-7 text-center text-lg-start">
-                <h1  className="display-4 fw-bold lh-1 mb-3 text-white">Cobro de Cheques</h1>
-                <p  className="col-lg-10 fs-4 text-white">Introduzca los datos para cobrar </p>
+                <h2  className="display-4 fw-bold lh-1 mb-3 text-white">Cobrar Cheque</h2>
+                <p  className="col-lg-10 fs-4 text-white">Introduzca los datos requeridos para hacer efectivo su cheque. Recuerde estar usando la cuenta acreedora del cheque en su Metamask para poder cobrarlo. Cuidado al copiar con los espacios.</p>
               </div>
               <div className="col-md-10 mx-auto col-lg-5">
                 <form className="p-4 p-md-5 border rounded-3 bg-light">
                   <div className="form-floating mb-3">
-                    <input value={nonce} onChange={e => setNonce(e.target.value)} type="number" className="form-control" id="nonce"/>
-                    <label htmlFor="amount">Serie del cheque</label>
+                    <input value={nonce} onChange={e => setNonce(e.target.value)} type="number" className="form-control" id="serie2"/>
+                    <label htmlFor="serie2">Serie del cheque</label>
                   </div>
                     <div className="form-floating mb-3">
-                      <input value={amount} onChange={e => setAmount(e.target.value.replace(',', '.'))} type="text" className="form-control" id="amount"/>
-                      <label htmlFor="amount">BNBs a cobrar</label>
+                      <input value={amount} onChange={e => setAmount(e.target.value.replace(',', '.'))} type="text" className="form-control" id="amountToPay2"/>
+                      <label htmlFor="amountToPay2">BNBs a cobrar</label>
                     </div>
                     <div className="form-floating mb-3">
                       <input value={signedHash} onChange={e => setSignedHash(e.target.value)} type="text" className="form-control" id="signedHash"/>
@@ -114,11 +97,9 @@ async function init() {
                       <input value={payer} onChange={e => setPayer(e.target.value)} type="text" className="form-control" id="payer"/>
                       <label htmlFor="payer">Pagador</label>
                     </div>
-                    <button id="btn-firma"  onClick={() => payCheck()} className="w-100 btn btn-lg btn-primary" type="button">Cobrar</button>
-    
-                        {/* <button id="btn-firma"  onClick={() => signPayment(recipient, amount, nonce, contractAddress)} className="w-100 btn btn-lg btn-primary" type="button">Firmar</button> */}
+                    <button id="btn-receive"  onClick={() => payCheck()} className="w-100 btn btn-lg btn-primary" type="button">Cobrar</button>
+
                     <hr className="my-4"/>
-                    <small id="cobrador" className="text-muted">...</small>
                 </form>
               <div>
             </div>

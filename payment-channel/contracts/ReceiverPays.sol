@@ -5,14 +5,17 @@ contract ReceiverPays {
     
     address payable public owner = msg.sender;
 
-    mapping(uint256 => bool) usedNonces;
-    mapping(uint256 => address) noncesRecipients;
-    mapping(uint256 => uint256) noncesAmount;
+    mapping(uint256 => bool) public usedNonces;
+    mapping(uint256 => address) public noncesRecipients;
+    mapping(uint256 => uint256) public noncesAmount;
+    mapping(address => uint256) moneyPayers;
 
     constructor() payable {}
     
     function moreMoney() public payable {
 
+        moneyPayers[msg.sender] = moneyPayers[msg.sender] + msg.value;
+ 
     }
     
     function balanceOf() public view returns(uint256) {
@@ -20,25 +23,22 @@ contract ReceiverPays {
        return address(this).balance;
     }
     
-      function recipients(uint256 nonce) public view returns(address) {
-        require(noncesRecipients[nonce] != address(0), 'Este cheque no se ha pagado');
-       return noncesRecipients[nonce];
-    }
-    
-      function amountPaid(uint256 nonce) public view returns(uint256) {
-        require(noncesAmount[nonce] != 0, 'Este cheque no se ha pagado');
-       return noncesAmount[nonce];
+      function recipientBalance(address recipient) public view returns(uint256) {
+
+      return moneyPayers[recipient];
     }
 
     function claimPayment(address payer, uint256 amount, uint256 nonce, bytes memory signature) public {
         require(!usedNonces[nonce], 'Este cheque ya se ha pagado');
-        usedNonces[nonce] = true;
 
         // this recreates the message that was signed on the client
         bytes32 message = prefixed(keccak256(abi.encodePacked(msg.sender, amount, nonce, this)));
 
         require(recoverSigner(message, signature) == payer);
-
+        // the payer account cannot pay more money than he have entered
+        require(moneyPayers[payer] >= amount, 'El pagador no dispone del dinero suficiente para pagarle. Reclame su ingreso');
+        usedNonces[nonce] = true;
+        moneyPayers[payer] = moneyPayers[payer] - amount;
         msg.sender.transfer(amount);
         noncesRecipients[nonce] = msg.sender;
         noncesAmount[nonce] = amount;
