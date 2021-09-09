@@ -53,6 +53,8 @@ const PayCheck = () => {
   
               if (err.data.message === 'execution reverted: Este cheque ya se ha pagado') {
                 mensajeError =  'Este cheque ya se ha pagado';
+              } else if(err.data.message === 'execution reverted: El pagador no dispone del dinero suficiente para pagarle. Reclame su ingreso'){
+                mensajeError =  'El pagador no dispone del dinero suficiente para pagarle. Reclame su ingreso';
               } else {
                 console.log('error: ',mensajeError);
               }
@@ -96,6 +98,9 @@ const PayCheck = () => {
                     <div className="form-floating mb-3">
                       <input value={payer} onChange={e => setPayer(e.target.value)} type="text" className="form-control" id="payer"/>
                       <label htmlFor="payer">Pagador</label>
+                      <button type="button" className="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#pagadorModal">
+                  <i className="fa fa-info"></i>
+                  </button>
                     </div>
                     <button id="btn-receive"  onClick={() => payCheck()} className="w-100 btn btn-lg btn-primary" type="button">Cobrar</button>
 
@@ -106,6 +111,29 @@ const PayCheck = () => {
           </div>
         </div>
       </div>
+      {/* Modal de informacion */}
+      <div className="modal fade" id="pagadorModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="pagadorModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="pagadorModalLabel">Registro del pagador</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+   Ya que ésta DAPP tiene una intención divulgativa, el contrato de pago tiene que estar disponible para diversos pagadores. Para poder realizar esa función es necesario que a la hora del cobro el acreedor determine quien es el que le debe el dinero. Éste usuario además habrá tenido que ingresar la cantidad prometida porque la seguridad del contrato <strong>rechazará todo pago de un pagador que no haya ingresado el dinero demandado</strong>. <br/><br/>
+    
+ Los cheques que no se hayan podido cobrar por falta de fondos <strong>no se anulan</strong>. Es decir, si el pagador ingresa el dinero posteriormente a la reclamación del acreedor se podrá ejecutar el cobro sin problemas.  <br/><br/>
+ 
+ Para eliminar la desconfianza entre las partes, propio de la naturaleza de todo contrato inteligente, se podría añadir una claúsula más para que no pudiese realizar cheques quien no disponga del dinero ingresado en el contrato pagador de antemano. Pero he considerado que ya he complicado bastante los contratos para quien desee estudiarlos, y por tanto, he decidido no implementar ésta importante claúsula para no complicar más los contratos de la DAAP. 
+    </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      {/* fin de modal de informacion */}
     </div>
     )
 }

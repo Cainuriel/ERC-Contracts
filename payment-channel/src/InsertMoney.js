@@ -106,7 +106,10 @@ const InsertMoney = () => {
             <div className="row align-items-center g-lg-5 py-5">
               <div className="col-lg-7 text-center text-lg-start">
                 <h2  className="display-4 fw-bold lh-1 mb-3 text-white">Ingresar BNB al contrato</h2>
-                <p  className="col-lg-10 fs-4 text-white">El contrato está preparado para recibir BNBs de cualquier cuenta. Aun así controla que nadie pueda gastar más de lo que ingrese. Si realiza un cheque de 1 BNB y tiene en el contrato solo 0.5, por ejemplo, el cheque no se cobra ni se anula. Puede ingresar posteriormente 0.5 BNB para que el cobrador pueda ejecutarlo. </p>
+                <p  className="col-lg-10 fs-4 text-white">El contrato está preparado para recibir BNBs de cualquier cuenta.</p>  
+                <p  className="col-lg-10 fs-4 text-white">Se controla que nadie pueda gastar más de lo que ingrese. Por defecto la cantidad es 0.1 BNB pero puede colocar la cantidad que desee.</p>
+                <p  className="col-lg-10 fs-4 text-white">Si no ve su saldo ingresado en el contrato apriete el botón verde.</p> 
+                <p  className="col-lg-10 fs-4 text-white">Si usted realiza un cheque de 1 BNB y tiene en el contrato solo 0.5 ingresados <strong>el cheque no se cobrará ni se anulará</strong>. Puede ingresar posteriormente los 0.5 BNB faltantes para que el cobrador pueda ejecutar su cheque. </p>
 
               </div>
               <div className="col-md-10 mx-auto col-lg-5">
