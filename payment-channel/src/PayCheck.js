@@ -95,10 +95,10 @@ const PayCheck = () => {
                       <input value={signedHash} onChange={e => setSignedHash(e.target.value)} type="text" className="form-control" id="signedHash"/>
                       <label htmlFor="signedHash">Hash firmado</label>
                     </div>
-                    <div className="form-floating mb-3">
+                    <div className="form-floating mb-3 d-inline-flex">
                       <input value={payer} onChange={e => setPayer(e.target.value)} type="text" className="form-control" id="payer"/>
                       <label htmlFor="payer">Pagador</label>
-                      <button type="button" className="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#pagadorModal">
+                      <button type="button" className="btn btn-secondary mx-3" data-bs-toggle="modal" data-bs-target="#pagadorModal">
                   <i className="fa fa-info"></i>
                   </button>
                     </div>

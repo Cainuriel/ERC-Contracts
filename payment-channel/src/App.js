@@ -114,13 +114,13 @@ function App() {
               <p  className="col-lg-10 fs-4 text-white">Introduzca los datos del beneficiario y cantidad a abonar para que puedan ser firmados con la cuenta que tenga conectada.</p>
               <p  className="col-lg-10 fs-4 text-white">Después de que usted firme el Hash recibirá otro con su firma incluída. Junto a el le aparecerán los datos que tendría que mandar al cobrador del mismo. Tenga a mano el bloc de notas para copiarlos.</p>
               <p  className="col-lg-10 fs-4 text-white">Añada otra cuenta de su billetera como cobrador si usted quiere realizar también el cobro del cheque.</p> 
-               <p  className="col-lg-10 fs-4 text-white">El hash se puede firmar fuera de la red como verá en otros tutoriales. Sin embargo, yo utilizo otro contrato en la testnet. Si también desea verlo <a href="https://testnet.bscscan.com/address/0x854F2CBa80dAe7989Dd5729Ed2a71A1923d43243#code "target="_blank">aquí</a> lo tiene. </p>
+               <p  className="col-lg-10 fs-4 text-white">El hash se puede firmar fuera de la red como verá en otros tutoriales. Sin embargo, yo utilizo otro contrato en la testnet. Si también desea verlo <a href="https://testnet.bscscan.com/address/0x854F2CBa80dAe7989Dd5729Ed2a71A1923d43243#code " target="_blank">aquí</a> lo tiene. </p>
             </div>
             <div className="col-md-10 mx-auto col-lg-5">
               <form className="p-4 p-md-5 border rounded-3 bg-light">
-                <div className="form-floating mb-3">
+                <div className="form-floating mb-3 d-inline-flex">
                   <input value={contractAddress} onChange={e => setContractAddress(e.target.value)} type="text" className="form-control" id="contractAddress" disabled/> 
-                  <button type="button" className="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#contratoModal">
+                  <button type="button" className="btn btn-secondary mx-3" data-bs-toggle="modal" data-bs-target="#contratoModal">
                   <i className="fa fa-info"></i>
                   </button>
                   <label htmlFor="contractAddress">Contrato de cobro</label>   
@@ -129,10 +129,10 @@ function App() {
                   <input value={recipient} onChange={e => setRecipient(e.target.value)} type="text" className="form-control" id="recipient"/>
                   <label htmlFor="recipient">Beneficiario</label>
                 </div>
-                <div className="form-floating mb-3">
+                <div className="form-floating mb-3 d-inline-flex">
                   <input value={nonce} onChange={e => setNonce(e.target.value)} type="number" className="form-control" id="serie"/>
                   <label htmlFor="serie">Serie del cheque</label>
-                  <button type="button" className="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#serieModal">
+                  <button type="button" className="btn btn-secondary mx-3" data-bs-toggle="modal" data-bs-target="#serieModal">
                   <i className="fa fa-info"></i>
                   </button>
                 </div>
@@ -209,10 +209,10 @@ function App() {
     <div className="container p-4 pb-0">
 
       <section className="">
-        <p className="d-flex justify-content-center align-items-center">
+      <a className="text-decoration-none" href="https://github.com/Cainuriel/ERC-Contracts/tree/main/payment-channel" target="_blank"> <p className="d-flex justify-content-center align-items-center">
           <span className="me-3">Código en Github </span>
           <i className="fab fa-github"></i>
-        </p>
+        </p></a> 
       </section>
   
     </div>
