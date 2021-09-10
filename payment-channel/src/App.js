@@ -100,7 +100,6 @@ function App() {
     return ( 
 
   <div className="App">
-    <h1>Ejemplo de canal de pago en red Ethereum o similares</h1>
     <Intro/>   
       <InsertMoney/>
       <h3>¿Qué desea hacer?</h3>

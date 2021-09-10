@@ -77,6 +77,22 @@ const Intro = () => {
     return (
         <div className="App">       
         <div className="b-example-divider"></div>
+        <div className="bg-dark container col-xl-10 col-xxl-8 px-4 py-5">
+            <div className="row align-items-center g-lg-5 py-5">
+            <h1  className="display-4 fw-bold lh-1 mb-3 text-white">Canal de pago para red Ethereum o similares</h1>
+              <div className="col-lg-7 text-center text-lg-start">
+              <h1  className="display-4 fw-bold lh-1 mb-3 text-white">¿Qué es una red de pago?</h1>
+                <p  className="col-lg-10 fs-4 text-white">Una red de pago, en inglés <i>Payment Channel</i>, es una vía para realizar numerosas transacciones de una criptomoneda con el mínimo coste. </p>
+                <p  className="col-lg-10 fs-4 text-white">La gran mayoría de las criptomonedas de segunda generación disponen de una gran limitación a la hora de realizar numerosas transacciones. No solo en tanto a la escalabilidad por segundo que pueda disponer la blockchain, sino por <strong>las altas comisiones existentes</strong> por cada transacción. Especialmente dolorosas son en la red Ethereum, que, a Septiembre del 2021, siguen siendo inasumibles para el envio de micropagos o para realizar un canal constante de los mismos, como por ejemplo, el envío mensual de pagos de nóminas a un número indeterminado de trabajadores.</p>
+                <p  className="col-lg-10 fs-4 text-white">El canal de pago muchas personas puedan realizar todas las transacciones que deseen en <strong>segundo plano</strong>, reduciendo las transacciones reales en la  blockchain principal a únicamente dos. Volviendo al ejemplo de pago de unas nóminas, el pagador puede ingresar un dinero total y realizar tantos cheques a cobrar como empleados disponga. Una única transacción para ingresar, y una única transacción por empleado a cobrar.</p>
+              </div>
+              <div className="col-md-10 mx-auto col-lg-5">
+               <img src="./img/dibujo.png" width="300" alt="dibujo de canal de pago"/>   
+              <div>
+            </div>
+          </div>
+        </div>
+      </div>
           <div className="bg-dark container col-xl-10 col-xxl-8 px-4 py-5">
             <div className="row align-items-center g-lg-5 py-5">
               <div className="col-lg-7 text-center text-lg-start">
