@@ -1,11 +1,5 @@
 # 1º Despliegue en la testnet de Binance Smart Chain
 
-## Clonar repositorio
-
-```bash
-git clone git@github.com:HosTechTools/react-front-BEP20.git
-```
-
 ## Instalar dependencias del proyecto
 
 ```bash
