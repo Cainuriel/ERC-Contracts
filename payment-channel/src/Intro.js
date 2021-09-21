@@ -102,9 +102,7 @@ const Intro = () => {
                 <p  className="col-lg-10 fs-4 text-white">Si no tenía la Red, tampoco tendra BNBs de prueba para hacer el tutorial. Apretando al boton azul usted podrá reclamar un BNB para poder crear un cheque.</p>
               </div>
               <div className="col-md-10 mx-auto col-lg-5">
-
-              <button id="btn-firma"  onClick={() => init()} className="w-100 btn btn-lg btn-danger mb-4" type="button">Conectar Metamask</button>
-
+                  <button id="btn-firma"  onClick={() => init()} className="w-100 btn btn-lg btn-danger mb-4" type="button">Conectar Metamask</button>
                     <button id="bnbNetwork"  onClick={() => addNetwork()} className="w-100 btn btn-lg btn-warning mb-4" type="button">Añadir Red Binance Smart Chain de pruebas</button>
 
                     <button id="faucet"  onClick={() => faucet()} className="w-100 btn btn-lg btn-primary" type="button">Faucet de Binance</button>
@@ -114,7 +112,7 @@ const Intro = () => {
                     </div>
                     <hr className="my-4"/>
                     <small id="intro" className="text-muted">No conectado</small>
-                </form>
+                    </form>
               <div>
             </div>
           </div>
