@@ -84,7 +84,7 @@ function App() {
               <p  className="col-lg-10 fs-4 text-white">Introduzca los datos del beneficiario y cantidad a abonar para que puedan ser firmados con la cuenta que tenga conectada.</p>
               <p  className="col-lg-10 fs-4 text-white">Después de que usted firme el Hash recibirá otro con su firma incluída. Junto a el le aparecerán los datos que tendría que mandar al cobrador del mismo. Tenga a mano el bloc de notas para copiarlos.</p>
               <p  className="col-lg-10 fs-4 text-white">Añada otra cuenta de su billetera como cobrador si usted quiere realizar también el cobro del cheque.</p> 
-               <p  className="col-lg-10 fs-4 text-white">El hash se puede firmar fuera de la red como verá en otros tutoriales. Sin embargo, yo utilizo otro contrato en la testnet. Si también desea verlo <a href="https://testnet.bscscan.com/address/0x854F2CBa80dAe7989Dd5729Ed2a71A1923d43243#code " target="_blank">aquí</a> lo tiene. </p>
+               <p  className="col-lg-10 fs-4 text-white">El hash se puede firmar fuera de la red como verá en otros tutoriales. Sin embargo, yo utilizo otro contrato en la testnet. Si también desea verlo <a href="https://testnet.bscscan.com/address/0x854F2CBa80dAe7989Dd5729Ed2a71A1923d43243#code " target="_blank" rel="noreferrer">aquí</a> lo tiene. </p>
             </div>
             <div className="col-md-10 mx-auto col-lg-5">
               <form className="p-4 p-md-5 border rounded-3 bg-light">
@@ -161,7 +161,7 @@ function App() {
     Puede comprobar si un número de serie se ha utilizado desde las funciones <i>getters</i> que tenemos en el contrato. <br/><br/>
     Para saber si una serie ya se ha utilizado use la función: <i>usedNonces</i>, para saber quien lo ha cobrado con la función: <i>noncesRecipients</i>, y la cantidad que se ha abonado con la función: <i>noncesAmount</i>.
     Aquí dispone del enlace para que haga esas comprobaciones si es su deseo:<br/><br/>
-    <a href="https://testnet.bscscan.com/address/0x00e55244c13FfA6D6313718459D82536F43F6dcf#readContract" target="_blank"><i>Read Functions</i></a>
+    <a href="https://testnet.bscscan.com/address/0x00e55244c13FfA6D6313718459D82536F43F6dcf#readContract" target="_blank" rel="noreferrer"><i>Read Functions</i></a>
     </div>
       <div className="modal-footer">
         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -178,7 +178,7 @@ function App() {
 
     <div className="p-4 pb-0">
       <section className="">
-      <a className="text-decoration-none" href="https://github.com/Cainuriel/ERC-Contracts/tree/main/payment-channel" target="_blank"> <p className="d-flex justify-content-center align-items-center">
+      <a className="text-decoration-none" href="https://github.com/Cainuriel/ERC-Contracts/tree/main/payment-channel" target="_blank" rel="noreferrer"> <p className="d-flex justify-content-center align-items-center">
           <span className="me-3">Código en Github </span>
           <i className="fab fa-github"></i>
         </p></a> 

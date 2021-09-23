@@ -41,7 +41,7 @@ const PayCheck = () => {
             if(tx) {
               Swal.fire({
               title:  `Se ha envíado ${amount} BNB a la cuenta ${account}`,
-              html: `<a href="https://testnet.bscscan.com/tx/${tx.hash}" target="_blank">Hash de la transacción</a>`,
+              html: `<a href="https://testnet.bscscan.com/tx/${tx.hash}" target="_blank" rel="noreferrer">Hash de la transacción</a>`,
               icon: 'success',
               confirmButtonText: 'Cerrar'
             })};

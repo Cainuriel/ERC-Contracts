@@ -49,7 +49,7 @@ const Intro = () => {
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              window.open('https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn', '_blank');  
+              window.open('https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn', '_blank', 'rel="noreferrer"');  
             }});
         } 
       
@@ -70,7 +70,7 @@ const Intro = () => {
         }
 
         function faucet() {
-          window.open('https://testnet.binance.org/faucet-smart', '_blank');  
+          window.open('https://testnet.binance.org/faucet-smart', '_blank', 'rel="noreferrer"');  
         }
     
     return (

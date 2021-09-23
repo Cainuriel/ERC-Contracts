@@ -36,7 +36,7 @@ const InsertMoney = () => {
             if(Ok) {
               Swal.fire({
               title:  `Se ha enviado ${amount} BNB al contrato ${payContract}`,
-              html: `<a href="https://testnet.bscscan.com/tx/${tx.hash}" target="_blank">Hash de la transacción</a>`,
+              html: `<a href="https://testnet.bscscan.com/tx/${tx.hash}" target="_blank" rel="noreferrer">Hash de la transacción</a>`,
               icon: 'success',
               confirmButtonText: 'Cerrar'
             })};
