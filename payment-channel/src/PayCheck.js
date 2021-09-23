@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import React  from 'react';
 import { ethers } from 'ethers';
 import ReceiverPays from './artifacts/contracts/ReceiverPays.sol/ReceiverPays.json';

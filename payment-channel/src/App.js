@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Swal from 'sweetalert2';
 import Signature from './artifacts/contracts/Signature.sol/Signature.json';
 import Intro from './Intro';
@@ -18,7 +18,6 @@ function App() {
   const signatureAddress = "0x854F2CBa80dAe7989Dd5729Ed2a71A1923d43243";
   const [signedHash, setSignedHash] = useState('');
   const [clipboard, setClipboard] = useClippy();
-  const [payer, setPayer] = useState('');
   const [condition, setCondition] = useState(true);   
 
             async function signPayment() {
@@ -65,45 +64,17 @@ function App() {
               }
             }
 
-      //     useEffect(function () {
-      //       changeAccounts();
-      //     },[]);
-
-      // async function init() {   
-
-      //       if (typeof window.ethereum !== 'undefined') {
-
-      //           const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-      //           let accountConnection = accounts[0];
-
-      //           if (accountConnection) {
-
-      //                 setUser(accountConnection);
-
-      //                 }
-      //           }
-      //         }
-      //         // funcion que detecta los cambios de cuenta
-      //   async function changeAccounts() {
-        
-      //     if (typeof window.ethereum !== 'undefined') {
-
-      //       window.ethereum.on("accountsChanged", async function () {
-
-      //         await init();
-              
-      //       });
-
-      //     }
-      //   }
-
     return ( 
 
   <div className="App">
     <Intro/>   
       <InsertMoney/>
-      <h3>¿Qué desea hacer?</h3>
-      <button className="btn-warning my-3" onClick={() => setCondition(!condition)}> Crear Cheque / Cobrar Cheque </button>
+      <div className="bg-dark container col-xl-10 col-xxl-8 px-4 py-5">
+        <div className="row justify-content-md-center">
+        <h3 className="text-white text-center col-lg-4">¿Qué desea hacer?</h3>
+        <button className="btn btn-lg btn-primary col-lg-4" onClick={() => setCondition(!condition)}> Crear Cheque / Cobrar Cheque </button>
+        </div>
+      </div>
     <div className={condition ? '' : 'd-none'}>       
       <div className="b-example-divider"></div>
         <div className="bg-dark container col-xl-10 col-xxl-8 px-4 py-5">
@@ -201,31 +172,26 @@ function App() {
 
 {/* Fin de los modals */}
 
-<section className="container">
+
   {/* Footer */}
-  <footer className="text-center text-white" style={{backgroundColor: "#0a4275"}}>
+  <footer className="text-center text-white my-3 container" style={{backgroundColor: "#0a4275"}}>
 
-    <div className="container p-4 pb-0">
-
+    <div className="p-4 pb-0">
       <section className="">
       <a className="text-decoration-none" href="https://github.com/Cainuriel/ERC-Contracts/tree/main/payment-channel" target="_blank"> <p className="d-flex justify-content-center align-items-center">
           <span className="me-3">Código en Github </span>
           <i className="fab fa-github"></i>
         </p></a> 
       </section>
-  
     </div>
- 
-
-
-    <div className="text-center p-3"  style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
+    <div className="text-center p-3 container"  style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
     2021 <a className="text-white text-decoration-none" href="https://cainuriel.github.io/"> <img src='./favicon.ico'/> 
        Developer Superloper</a>
     </div>
    
   </footer>
 
-</section>
+
 
 </div>
 
