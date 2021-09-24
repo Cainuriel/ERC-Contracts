@@ -19,7 +19,7 @@ interface IERC20 {
 }
 
 
-contract ALL is Context, IERC20, Ownable {
+contract FiveFeesToken is Context, IERC20, Ownable {
     
 	using SafeMath for uint256;
 	using Address for address;
@@ -44,7 +44,7 @@ contract ALL is Context, IERC20, Ownable {
 	uint256 private _tHODLrRewardsTotal;
 
 	string private _name = "5 Fees";
-	string private _symbol = "ALL";
+	string private _symbol = "FFT";
 	uint8 private _decimals = 18;
 	
 	uint256 public _rewardFee = 1;
