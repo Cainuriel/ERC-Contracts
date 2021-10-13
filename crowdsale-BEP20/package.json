@@ -1,30 +1,32 @@
 {
-  "name": "react-dapp",
+  "name": "nft-shop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
-    "@openzeppelin/contracts": "^2.5.1",
+    "@openzeppelin/contracts": "^4.3.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "chai": "^4.3.4",
     "dotenv": "^8.2.0",
-    "ethereum-waffle": "^3.3.0",
-    "ethers": "^5.3.1",
-    "hardhat": "^2.3.3",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.4.7",
+    "hardhat": "^2.6.4",
     "react": "^17.0.2",
+    "react-background-video-player": "^1.1.7",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "sweetalert2": "^11.1.5",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-
+    "eject": "react-scripts eject",
+    "deploy": "node ./scripts/deploy.js"
   },
   "eslintConfig": {
     "extends": [
@@ -43,5 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@nomiclabs/buidler": "^1.4.8",
+    "@nomiclabs/hardhat-etherscan": "^2.1.6"
   }
 }

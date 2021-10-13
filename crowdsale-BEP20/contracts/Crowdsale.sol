@@ -18,6 +18,7 @@ import "./tools/SafeMath.sol";
  * behavior.
  */
 contract Crowdsale  {
+  
   using SafeMath for uint256;
 
   // The token being sold
@@ -54,7 +55,7 @@ contract Crowdsale  {
   constructor(uint256 _rate, address payable _wallet, BEP20 _token) public {
     require(_rate > 0);
     require(_wallet != address(0));
-//    require(_token != address(0));
+    //require(_token != address(0));
 
     rate = _rate;
     wallet = _wallet;
@@ -72,7 +73,7 @@ contract Crowdsale  {
     buyTokens(msg.sender);
   }
   
-    receive ()  external payable {
+  receive ()  external payable {
     buyTokens(msg.sender);
   }
 

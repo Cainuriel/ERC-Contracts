@@ -15,7 +15,7 @@ async function main() {
 
   // We get the contract to deploy
   const Presale = await hre.ethers.getContractFactory("Presale");
-  const presale = await Presale.deploy(100000, "0x322d9e3F049a845e9C8ED089B2Bdf8F33c65a08F", "0x21176b07a996E62C905e5bf29b1E3e8F1f237d8A", "0x21176b07a996E62C905e5bf29b1E3e8F1f237d8A"); // Trusty contract.
+  const presale = await Presale.deploy(20000, "0x952292556C09C074f135e7912c5801E04219d901", "0x952292556C09C074f135e7912c5801E04219d901"); // Pandora contract.
 
   await presale.deployed();
 

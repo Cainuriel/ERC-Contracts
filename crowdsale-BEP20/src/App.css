@@ -1,38 +1,146 @@
+@font-face {
+  font-family: 'open-sans';
+  src: url('./open-sans/open-sans-v26-latin-regular.woff2') format('woff2'),
+      url('./open-sans/open-sans-v26-latin-regular.woff') format('woff'),
+      url('./open-sans/open-sans-v26-latin-regular.svg') format('svg'),
+      url('./open-sans/open-sans-v26-latin-regular.ttf')  format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+    background-color: #0b0c0e;
+    font-family: 'open-sans'
+}
+   
+
+   /* Video */
+.Video {
+
+  z-index: -10;
+  min-height: 100%;
+  
+}
+
+
+.logoBlanco {
+  width: 15vw;
+}
+
+.bnb-brand {
+  color: #f3ba2f;
+}
+
+
+.logoBNB {
+  width: 42px;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App-buttons {
+  /* background-color: #89828f; */
+  width: 90vw;
+  margin: 0 auto;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  color: #9b0ac8;
+  z-index: -10;
+}
+
+/** ================================================================
+                Botones 
+====================================================================*/
+
+.btn {
+  --hue: 190;
+  position: relative;
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #f7f1f1;
+  border: 1px solid #f7f1f1;
+  outline: transparent;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: 0.25s;
+}
+.btn:hover {
+  background: #f7f1f1;
+}
+.btn-primary {
+  --hue: 187;
+}
+.btn-ghost {
+  color: white;
+  background-color: transparent;
+  border-color: gray;
+}
+.btn-ghost:hover {
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.btn-shine {
+  color: gray;
+}
+.btn-shine::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(248, 247, 247, 0.5), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
+}
+.btn-shine:hover {
+  background: transparent;
+  box-shadow: 0 0 20px 10px rgba(248, 247, 247, 0.5);
+}
+.btn-shine:hover::before {
+  transform: translateX(100%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/** =================================================================
+                Cards Info Precio y Dispo
+====================================================================*/
+
+
+.numberSize {
+  font-size: calc(2vw + 2.4vmin);
 }
+
+/** ============================ BOTÓN INFO ====================================== */
+
+.info {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  border: none;
+  color: #0099ff;
+}
+
+/** =============== INPUTS  ==========================*/
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+
