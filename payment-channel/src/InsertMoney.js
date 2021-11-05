@@ -9,11 +9,23 @@ const InsertMoney = () => {
     const [amount, setAmount] = useState('0.1');
     const [balance, setBalance] = useState('');
     const payContract = "0x00e55244c13FfA6D6313718459D82536F43F6dcf";
+    const [network, setNetwork] = useState('no-net');
+    const BINANCENETWORK = 'bnbt';
+    const [doubleCheck, setDoubleChek] = useState(0);
+
+    async function takeNetwork() {
+      console.log('dentro de takeNetwork')
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const network = await provider.getNetwork();
+      console.log('network', network.name);
+      setNetwork(network.name);
+    }
 
     async function moreMoney() {
 
       if (typeof window.ethereum !== 'undefined') {
 
+          if(network == BINANCENETWORK || doubleCheck == 1) {
           const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' });
           const provider = new ethers.providers.Web3Provider(window.ethereum);
           const signer = provider.getSigner();
@@ -53,12 +65,43 @@ const InsertMoney = () => {
             })
             console.log("Error: ", err)
               }
+           } else {
+            setDoubleChek(1); // prevents double click in same function
+            isInNetwork();
+           }
+          }
+    }
+
+        async function isInNetwork() {
+        console.log('en isInNetwork');       
+          if(network !== 'no-net' || network === BINANCENETWORK) {
+            Swal.fire({
+                title: 'red',
+                //text: `Cambia a BSC si la tienes o sigue el siguiente tutorial para configurarla`,
+                text: 'Estás en la red '+network+', has de cambiar a la red '+BINANCENETWORK,
+                confirmButtonText: 'Cambiar o instalar red BNB de pruebas',
+                //imageUrl: 'https://i2.wp.com/criptotendencia.com/wp-content/uploads/2020/04/binance-smart-chain.jpg?fit=1200%2C674&ssl=1',
+                imageUrl: 'https://cryptodaily.io/wp-content/uploads/2021/07/p-2.png',
+                imageWidth: 300,
+                
+                imageAlt: 'Red Binance Smart Chain',
+              }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  addNetwork();
+                  //window.open('https://academy.binance.com/es/articles/connecting-metamask-to-binance-smart-chain', '_blank');  
+                }
+              }); 
+          } else {
+            moreMoney();
           }
         }
 
       useEffect(function () {
+        takeNetwork();
         changeAccounts();
-      },[]);
+   
+      },[network]);
 
       async function getBalanceUser() {
 
@@ -98,6 +141,32 @@ const InsertMoney = () => {
 
           }
         }
+
+        async function addNetwork() {
+
+          let networkData = [{
+                  chainId: "0x61",
+                  chainName: "BSCTESTNET",
+                  rpcUrls: ["https://data-seed-prebsc-2-s3.binance.org:8545"],
+                  nativeCurrency: {
+                    name: "BINANCE COIN",
+                    symbol: "BNB",
+                    decimals: 18,
+                  },
+                  blockExplorerUrls: ["https://testnet.bscscan.com/"],
+                },
+              ];
+      
+          // agregar red o cambiar red
+          return window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: networkData,
+            
+          }).then(takeNetwork())
+          
+        }
+
+
     
     return (
         <div className="App">       

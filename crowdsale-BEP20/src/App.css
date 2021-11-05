@@ -113,6 +113,11 @@ body {
   transform: translateX(100%);
 }
 
+.no-pointer:not(:disabled):not(.disabled) {
+ cursor: context-menu;
+}
+
+
 
 /** =================================================================
                 Cards Info Precio y Dispo
@@ -122,6 +127,7 @@ body {
 .numberSize {
   font-size: calc(2vw + 2.4vmin);
 }
+
 
 /** ============================ BOTÓN INFO ====================================== */
 

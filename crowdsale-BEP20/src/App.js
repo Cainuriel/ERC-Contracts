@@ -444,8 +444,8 @@ function App() {
             </div>
             <div>
               <button id="wallet" className="btn btn-primary btn-ghost btn-shine" onClick={conectionMetamask}>Conectar Metamask</button>
-              <button id="bnbs" className="btn btn-primary btn-ghost btn-shine mx-2 d-none">BNBs</button>
-              <button id="pandoras" className="btn btn-primary btn-ghost btn-shine d-none"> {userBalancePandoras} Pandoras</button>
+              <button  id="bnbs" className="btn btn-primary btn-ghost btn-shine mx-2 d-none">BNBs</button>
+              <button  id="pandoras" className="btn btn-primary btn-ghost btn-shine d-none"> {userBalancePandoras} Pandoras</button>
               {/* {(i18n.language == "en") ? <a className="col-md-2" onClick={() => i18n.changeLanguage('es')}><img src="./img/es.png" alt="Español" /></a> : <a className="col-md-2" onClick={() => i18n.changeLanguage('en')}><img src="./img/en.png" alt="English" /></a>} */}
             </div>
           </nav>
@@ -454,14 +454,14 @@ function App() {
         <div className="App-buttons my-3">
           <div className="row mt-3 mt-md-0 mb-3 mx-3 mx-md-0">
             <div className="card-deck">
-              <div className="card pt-5 pb-3 btn btn-primary btn-ghost btn-shine">
+              <div className="card pt-5 pb-3 btn btn-primary btn-ghost btn-shine no-pointer" disabled>
                 <h2 ><b>Pandoras</b> por 1 BNB</h2>
                 <div className="card-body">
                   <h3 className="card-title numberSize" id="rate">...</h3>
 
                 </div>
               </div>
-              <div className="card pt-5 pb-3 btn btn-primary btn-ghost btn-shine">
+              <div className="card pt-5 pb-3 btn btn-primary btn-ghost btn-shine no-pointer">
                 <h2> <b>Pandoras</b> disponibles</h2>
                 <div className="card-body">
                   <h3 className="card-title numberSize" id="balance">...</h3>
@@ -471,16 +471,16 @@ function App() {
           </div>
           
           <div className="row">
-            <div className="row mb-3">
-              <div className="btn btn-ghost btn-shine col-12 my-3">
+            <div className="row mb-3 d-flex justify-content-center">
+              <div className="btn btn-ghost btn-shine col-7 my-3">
                   <label className="bnb-brand font-weight-bold mr-2"><img className="mr-2 mb-2 logoBNB" src="./img/logoBNB.png" alt="Logo BNB" />BNB </label>
                   <input type="number" step="0.01" className="text-center btn btn-ghost btn-shine" onChange={e => setAmount(e.target.value.replace(',', '.'))} id="amount-bnb" placeholder='Introduzca cantidad' value={(amount === 0)? "" : amount} />
               </div>
-              <div className="btn btn-ghost btn-shine col-12 my-3">
-                  <label className="font-weight-bold mr-2"><img className="mr-2 mb-2" src="./img/logo-pandora.png" alt="Logo Pandora" /> PANDORA</label>
-                  <input className="text-center btn btn-ghost btn-shine" id="amount-pandoras" value={amountPandoras} disabled />
+              <div className="btn btn-ghost btn-shine col-7 my-3 no-pointer" >
+                  <label className="font-weight-bold mr-2"><img className="mr-2" src="./img/logo-pandora.png" alt="Logo Pandora" /> PANDORA</label>
+                  <input className="text-center btn btn-ghost btn-shine no-pointer mr-4" id="amount-pandoras" value={amountPandoras}  />
               </div>
-              <button className="col-12 btn btn-primary btn-ghost btn-shine font-weight-bold" onClick={buytokens}>Comprar Pandoras</button>
+              <button className="col-7 my-3 btn btn-primary btn-ghost btn-shine font-weight-bold" onClick={buytokens}>Comprar Pandoras</button>
             </div>
           </div>     
         </div>
