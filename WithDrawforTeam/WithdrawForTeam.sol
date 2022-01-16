@@ -15,7 +15,7 @@ contract WthdrawForTeams is Ownable {
 
     using SafeMath for uint256;
 
-    uint public teamNumber;
+    uint public membersForRegister;
     uint public stillToBePaid;  
     mapping(address => uint256) public percentage;
     mapping(address => uint256) public memberAmount;
@@ -63,7 +63,7 @@ contract WthdrawForTeams is Ownable {
      */
     constructor(uint _teamNumber)  
     {
-        teamNumber = _teamNumber;
+        membersForRegister = _teamNumber;
         stillToBePaid = _teamNumber;
     }
 
@@ -72,9 +72,9 @@ contract WthdrawForTeams is Ownable {
         */
         function setPercentageTeam(address _member, uint256 _percentage)  public onlyOwner 
     {
-        require(teamNumber != 0, "The registration of team members is now complete");
+        require(membersForRegister != 0, "The registration of team members is now complete");
         percentage[_member] = _percentage;
-        teamNumber = teamNumber.sub(1);
+        membersForRegister = membersForRegister.sub(1);
     }
 
         /**
@@ -82,9 +82,9 @@ contract WthdrawForTeams is Ownable {
         */
         function setAmountTeam(address _member, uint256 _amount)  public onlyOwner 
     {
-        require(teamNumber != 0, "The registration of team members is now complete");
+        require(membersForRegister != 0, "The registration of team members is now complete");
         memberAmount[_member] = _amount;
-        teamNumber = teamNumber.sub(1);
+        membersForRegister = membersForRegister.sub(1);
     }
 
         /**
