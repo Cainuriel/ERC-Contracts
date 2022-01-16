@@ -10,7 +10,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
  * Does not allow funds to be withdrawn until the entire team has purchased their share.
  * Allows payments in percentage or direct amount
  */
-contract WthdrawForTeams is Ownable {
+contract WithdrawForTeams is Ownable {
 
     using SafeMath for uint256;
 
