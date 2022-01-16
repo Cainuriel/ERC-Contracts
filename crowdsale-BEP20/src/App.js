@@ -423,7 +423,7 @@ function App() {
   return (
 
 <div className="App">
-        <main className="d-lg-none mt-5" style={{transform: `translateY(-${offSetY * 0.3}px)`}}>
+        {/* <main className="d-lg-none mt-5" style={{transform: `translateY(-${offSetY * 0.3}px)`}}>
         <div className="my-5">
           <a className="navbar-brand" href="">
             <img src="./logo192.png" height="30" alt="Logo de Pandora" />
@@ -433,8 +433,8 @@ function App() {
           <h2 className="text-white my-5">The sale is only enabled through a computer</h2>
           <h2 className="my-5">La venta solo es posible conectándose con un Ordenador</h2>
         </div>
-      </main>
-      <main className="d-none d-lg-block">
+      </main> */}
+      <main className="d-lg-block" style={{transform: `translateY(-${offSetY * 0.3}px)`}}>
         <header className="mb-5">
           <nav className="d-flex justify-content-between align-items-center mx-3 my-3">
             <div>
