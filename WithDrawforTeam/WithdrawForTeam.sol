@@ -48,7 +48,6 @@ contract WthdrawForTeams is Ownable {
           /**
     * Event for team collect logging
     * @param member address of team
-    * @param percentage of the member
     * @param amount balance of the team
     * @param date collection date
     */
@@ -118,12 +117,17 @@ contract WthdrawForTeams is Ownable {
         function withdrawTeamAmount() public 
     {   require(memberAmount[msg.sender] != 0, "This account is not in the team or have percentage");
         require(!paidOut[msg.sender], "You have already collected your share");
-        uint256 amount = memberAmount[msg.sender]);
+        uint256 amount = memberAmount[msg.sender];
         payable(msg.sender).transfer(amount);
         stillToBePaid = stillToBePaid.sub(1);
         paidOut[msg.sender] = true;
         emit WithdrawTeamAmount(msg.sender, amount, block.timestamp);
         
+    }
+
+        function getBalance() public view returns(uint256) 
+    {
+        return address(this).balance;
     }
 
 } 
