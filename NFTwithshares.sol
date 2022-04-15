@@ -23,8 +23,8 @@ contract NFTwithshares is ERC721Enumerable, Ownable {
   function mint(address _owner, string memory _name, string memory _simbol, uint256 _shares) public onlyOwner {
     counter++;
     _mint(address(this), counter);
-    nftAddressToken[counter] = address( 
-                            new Shares(   // el "casteo" address es para obtener la direccion del contrato ERC20
+    nftAddressToken[counter] = address(  // el "casteo" address es para obtener la direccion del contrato ERC20
+                            new Shares(   
                             _name,
                             _simbol,
                             _owner,
