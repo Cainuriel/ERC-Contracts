@@ -24,10 +24,10 @@ function mint(address account, uint256 id, uint256 amount) public onlyOwner
             _mint(account, id, amount, "");
     }
 
-    function sale(address account, uint256 id, uint256 amount) public payable 
-    {       
-            _mint(account, id, amount, "");
-    }
+    // function sale(address account, uint256 id, uint256 amount) public payable 
+    // {       
+    //         _mint(account, id, amount, "");
+    // }
 
 function burn(address account, uint256 id, uint256 amount) public 
     {
