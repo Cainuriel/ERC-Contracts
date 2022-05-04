@@ -1,2 +1,2 @@
 # ERC-Contracts
-Ethereum No Fungible Tokens and others contracts.
+Contratos inteligentes de diversa indole
