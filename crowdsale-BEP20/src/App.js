@@ -46,31 +46,31 @@ function App() {
 //===========================================================================================
   async function addNetwork() {
 
-    // let networkData = [{
-    //         chainId: "0x61",
-    //         chainName: "BSCTESTNET",
-    //         rpcUrls: ["https://data-seed-prebsc-2-s3.binance.org:8545"],
-    //         nativeCurrency: {
-    //           name: "BINANCE COIN",
-    //           symbol: "BNB",
-    //           decimals: 18,
-    //         },
-    //         blockExplorerUrls: ["https://testnet.bscscan.com/"],
-    //       },
-    //     ];
-
-      let networkData = [{
-          chainId: "0x38",
-          chainName: "BSCMAINET",
-          rpcUrls: ["https://bsc-dataseed1.binance.org"],
-          nativeCurrency: {
-            name: "BINANCE COIN",
-            symbol: "BNB",
-            decimals: 18,
+    let networkData = [{
+            chainId: "0x61",
+            chainName: "BSCTESTNET",
+            rpcUrls: ["https://data-seed-prebsc-2-s3.binance.org:8545"],
+            nativeCurrency: {
+              name: "BINANCE COIN",
+              symbol: "BNB",
+              decimals: 18,
+            },
+            blockExplorerUrls: ["https://testnet.bscscan.com/"],
           },
-          blockExplorerUrls: ["https://testnet.bscscan.com/"],
-        },
-      ];
+        ];
+
+      // let networkData = [{
+      //     chainId: "0x38",
+      //     chainName: "BSCMAINET",
+      //     rpcUrls: ["https://bsc-dataseed1.binance.org"],
+      //     nativeCurrency: {
+      //       name: "BINANCE COIN",
+      //       symbol: "BNB",
+      //       decimals: 18,
+      //     },
+      //     blockExplorerUrls: ["https://testnet.bscscan.com/"],
+      //   },
+      // ];
 
       // agregar red o cambiar red
       return window.ethereum.request({
@@ -90,7 +90,7 @@ function App() {
             title: 'No estas en la Testnet de Binance Smart Chain',
             text: 'Estas en la red '+network,
             showCancelButton: true,
-            confirmButtonText: 'Configurar red',
+            confirmButtonText: 'Cambiar o instalar red',
             //imageUrl: 'https://i2.wp.com/criptotendencia.com/wp-content/uploads/2020/04/binance-smart-chain.jpg?fit=1200%2C674&ssl=1',
             imageUrl: 'https://cryptodaily.io/wp-content/uploads/2021/07/p-2.png',
             imageWidth: 300,
@@ -99,6 +99,7 @@ function App() {
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
+              
               addNetwork();
               //window.open('https://academy.binance.com/es/articles/connecting-metamask-to-binance-smart-chain', '_blank');  
             }
@@ -394,7 +395,7 @@ function App() {
       const tokenAddress = '0x952292556C09C074f135e7912c5801E04219d901';
       const tokenSymbol = 'PANDORA';
       const tokenDecimals = 18;
-      const tokenImage = 'https://gateway.pinata.cloud/ipfs/QmSzTfCjfV7dMMMrbjCm1MEeLkgjJCVWfzzW8SU6RSCQpk';
+      const tokenImage = 'https://ipfs.io/ipfs/QmSzTfCjfV7dMMMrbjCm1MEeLkgjJCVWfzzW8SU6RSCQpk'; // IPFS victory
 
 
       
@@ -441,7 +442,8 @@ function App() {
               <a className="navbar-brand" href="">
                 <img src="./logo192.png" className="logoBlanco" alt="Logo de Pandora" />
               </a>
-            </div>
+         
+            </div> <div className='text-danger'>TOKEN EN TESTNET PARA FINES DIVULGATIVOS</div>     
             <div>
               <button id="wallet" className="btn btn-primary btn-ghost btn-shine" onClick={conectionMetamask}>Conectar Metamask</button>
               <button  id="bnbs" className="btn btn-primary btn-ghost btn-shine mx-2 d-none">BNBs</button>
@@ -493,13 +495,23 @@ function App() {
                 <button onMouseEnter={() => setInfo(!info)} onMouseLeave={() => setInfo(!info)} id="btnInfo" className="info mr-3"><i className="fa fa-info"></i></button>
                 <div id="buyForUser" className="display-5 text-white">{ info  ? 'Usted todavía puede comprar ' + (rate * 1 - userBalancePandoras) +  ' Pandoras' : "Máxima compra permitida por usuario: 1 BNB" }</div>
         </div>
+        <div>
+          <a href="https://github.com/Cainuriel/ERC-Contracts/tree/main/crowdsale-BEP20" target="_blank">
+            <img className="logoBlanco" src="./github.png" alt="Logo github" />
+          </a>
+        </div>
+        <div>
+          <a href="https://cainuriel.github.io/" target="_blank">
+            DISEÑO Y CREACIÓN: FERNANDO LÓPEZ
+          </a>
+        </div>
       </main>
      
 
     <VideoPlayer style={{transform: `translateY(${offSetY * 1}px)`}}
         className="Video"
         src={
-          "./pandora.mp4"
+          "https://ipfs.io/ipfs/QmbQCZtUMashWZKYkdSdexZto2VmNwNnr5ivqJJAAMZT6L"
         }
         autoPlay={true}
         muted={true}
