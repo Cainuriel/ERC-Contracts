@@ -10,7 +10,7 @@ const PayCheck = () => {
     const [nonce, setNonce] = useState(0);
     const [payer, setPayer] = useState('');
     const [signedHash, setSignedHash] = useState('');
-    const payContract = "0x00e55244c13FfA6D6313718459D82536F43F6dcf";
+    const payContract = "0x65D56f700BF136b32162Ea82dAa55516d688B1c6";
 
     async function payCheck() {
 

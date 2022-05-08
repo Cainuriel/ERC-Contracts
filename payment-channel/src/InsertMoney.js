@@ -8,7 +8,7 @@ const InsertMoney = () => {
 
     const [amount, setAmount] = useState('0.1');
     const [balance, setBalance] = useState('');
-    const payContract = "0x00e55244c13FfA6D6313718459D82536F43F6dcf";
+    const payContract = "0x65D56f700BF136b32162Ea82dAa55516d688B1c6";
     const [network, setNetwork] = useState('no-net');
     const BINANCENETWORK = 'bnbt';
     const [doubleCheck, setDoubleChek] = useState(0);

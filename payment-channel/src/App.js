@@ -13,8 +13,8 @@ function App() {
   const [recipient, setRecipient] = useState('');
   const [nonce, setNonce] = useState(Math.floor(new Date().getTime()/1000.0));
   const [amount, setAmount] = useState('0.1');
-  const [user, setUser] = useState('');// 0x48ca55D931Da2ff95ccfB78f482F4462814D2f2E
-  const [contractAddress, setContractAddress] = useState("0x00e55244c13FfA6D6313718459D82536F43F6dcf"); // contrato de cobro.
+  const [user, setUser] = useState('');// 0x00e55244c13FfA6D6313718459D82536F43F6dcf
+  const [contractAddress, setContractAddress] = useState("0x65D56f700BF136b32162Ea82dAa55516d688B1c6"); // contrato de cobro.
   const signatureAddress = "0x854F2CBa80dAe7989Dd5729Ed2a71A1923d43243";
   const [signedHash, setSignedHash] = useState('');
   const [clipboard, setClipboard] = useClippy();
