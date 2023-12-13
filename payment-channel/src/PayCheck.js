@@ -31,7 +31,7 @@ const PayCheck = () => {
               text: 'Espere. No actualice la página',
               // icon: 'info',
               showConfirmButton: false,
-              imageUrl: 'https://thumbs.gfycat.com/ConventionalOblongFairybluebird-size_restricted.gif',
+              imageUrl: "./img/processing.gif",
               imageWidth: 100,
               imageHeight: 100,
               imageAlt: 'Procesando el ingreso',
